@@ -20,14 +20,14 @@ accelerate launch --mixed_precision "fp16" \
   tutorial_train.py \
   --pretrained_model_name_or_path="runwayml/stable-diffusion-v1-5" \
   --image_encoder_path="laion/CLIP-ViT-H-14-laion2B-s32B-b79K" \
-  --data_json_file="/content/data.csv" \
+  --data_json_file="data.csv" \
   --mixed_precision="fp16" \
   --resolution=512 \
   --train_batch_size=8 \
   --dataloader_num_workers=4 \
   --learning_rate=1e-04 \
   --weight_decay=0.01 \
-  --output_dir="/content/result" \
+  --output_dir="result" \
   --save_steps=10000
 
 ```
