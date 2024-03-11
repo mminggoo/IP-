@@ -5,7 +5,7 @@ from io import BytesIO
 from PIL import Image
 from tqdm import tqdm
 
-filename = "/content/part-00000-17da4908-939c-46e5-91d0-15f256041956-c000.snappy.parquet?download=true"
+filename = "part-00000-17da4908-939c-46e5-91d0-15f256041956-c000.snappy.parquet?download=true"
 df = pq.read_table(filename).to_pandas()
 
 li = []
