@@ -7,7 +7,7 @@
 
 
 ```
-pip install diffusers==0.22.1 accelerate einops pandas
+pip install transformers==4.25.1 diffusers==0.22.1 accelerate einops pandas
 
 git clone https://github.com/mminggoo/IP-Adapter.git
 cd IP-Adapter
