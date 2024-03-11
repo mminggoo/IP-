@@ -6,6 +6,33 @@
 [![GitHub](https://img.shields.io/github/stars/tencent-ailab/IP-Adapter?style=social)](https://github.com/tencent-ailab/IP-Adapter/)
 
 
+```
+
+pip install diffusers==0.22.1 accelerate einops
+
+git clone https://github.com/mminggoo/IP-Adapter.git
+cd IP-Adapter
+
+wget https://huggingface.co/datasets/kakaobrain/coyo-700m/resolve/main/data/part-00000-17da4908-939c-46e5-91d0-15f256041956-c000.snappy.parquet?download=true
+
+python dataset.py
+
+accelerate launch --mixed_precision "fp16" \
+  tutorial_train.py \
+  --pretrained_model_name_or_path="runwayml/stable-diffusion-v1-5" \
+  --image_encoder_path="laion/CLIP-ViT-H-14-laion2B-s32B-b79K" \
+  --data_json_file="/content/data.csv" \
+  --mixed_precision="fp16" \
+  --resolution=512 \
+  --train_batch_size=8 \
+  --dataloader_num_workers=4 \
+  --learning_rate=1e-04 \
+  --weight_decay=0.01 \
+  --output_dir="/content/result" \
+  --save_steps=10000
+
+```
+
 ---
 
 
