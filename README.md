@@ -7,7 +7,6 @@
 
 
 ```
-
 pip install diffusers==0.22.1 accelerate einops
 
 git clone https://github.com/mminggoo/IP-Adapter.git
