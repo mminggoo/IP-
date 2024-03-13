@@ -219,6 +219,16 @@ def parse_args():
         ),
     )
     parser.add_argument(
+        "--gradient_accumulation_steps",
+        type=int,
+        default=1,
+    )
+    parser.add_argument(
+        "--gradient_checkpointing",
+        action="store_true",
+        help="Whether or not to use gradient checkpointing to save memory at the expense of slower backward pass.",
+    )
+    parser.add_argument(
         "--save_steps",
         type=int,
         default=2000,
@@ -266,6 +276,7 @@ def main():
         mixed_precision=args.mixed_precision,
         log_with=args.report_to,
         project_config=accelerator_project_config,
+        gradient_accumulation_steps=args.gradient_accumulation_steps,
     )
     
     if accelerator.is_main_process:
@@ -328,6 +339,9 @@ def main():
     vae.to(accelerator.device, dtype=weight_dtype)
     text_encoder.to(accelerator.device, dtype=weight_dtype)
     image_encoder.to(accelerator.device, dtype=weight_dtype)
+
+    if args.gradient_checkpointing:
+        ip_adapter.enable_gradient_checkpointing()
     
     # optimizer
     params_to_opt = itertools.chain(ip_adapter.image_proj_model.parameters(),  ip_adapter.adapter_modules.parameters())
