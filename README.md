@@ -35,7 +35,7 @@ accelerate launch --mixed_precision "fp16" \
   train.py \
   --pretrained_model_name_or_path="runwayml/stable-diffusion-v1-5" \
   --image_encoder_path="laion/CLIP-ViT-H-14-laion2B-s32B-b79K" \
-  --data_json_file="data.csv" \
+  --data_json_file="part-00000-17da4908-939c-46e5-91d0-15f256041956-c000.snappy.parquet" \
   --mixed_precision="fp16" \
   --resolution=512 \
   --train_batch_size=2 \
